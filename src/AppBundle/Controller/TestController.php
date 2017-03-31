@@ -14,14 +14,12 @@ use Symfony\Component\HttpFoundation\Request;
 
 class TestController extends Controller
 {
-    /**
-     * @Route("/tests/index", name="testsIndex")
-     */
-    public function indexAction(Request $request)
+
+    public function indexAction(Request $request, $name, $page)
     {
         // replace this example code with whatever you need
-        return $this->render('AppBundle:Test:index.html.twig', [
-            'text' => "I sent text to you from controller action",
+        return $this->render('AppBundle:tests:index.html.twig', [
+            'text' => $name." - ".$page,
         ]);
     }
 
