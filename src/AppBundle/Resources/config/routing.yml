@@ -1,7 +1,7 @@
 test_index:
   path: /tests/{lang}/{name}/{page}
   defaults: {_controller: AppBundle:Test:index, name:Pepe, page:1}
-  methods: [GET]
+  methods: [GET, POST]
   requirements:
     name: "[a-zA-Z]*"
     page: \d+
