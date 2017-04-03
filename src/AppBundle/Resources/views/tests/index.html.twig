@@ -2,16 +2,34 @@
 {% block container %}
     {{ parent() }}
     {{ text }}
-
+    {#
+      Thi is a comment
+      <h1>Hello</h1>
+    #}
     <hr/>
     {{ fruits.pear }}
+
+    {% if fruits.pear starts with "f" %}
+        {{ fruits.apple }}
+    {% endif %}
 
     <hr/>
     {% set variable = "Hello Twig" %}
     {{ variable }}
 
     <hr/>
-    {% for product in products %}
-        {{ product.product}}
-    {% endfor %}
+    {% if products|length > 0 %}
+      <ul>
+        {% for product in products %}
+            <li>
+              {{ product.product}} - {{product.price}}
+            </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <hr/>
+    {% set fecha = date("-2 days", "Europe/Madrid") %}
+    {{ dump(fecha) }}
+
 {% endblock %}
