@@ -32,7 +32,10 @@
 
     <hr/>
     {% set fecha = date("-2 days", "Europe/Madrid") %}
-    {{ dump(fecha) }}
+    {% set text = "  dfadfad," %}
+    {{ fecha.date|date("d-m-Y") }}
+
+    {{ text|trim(",") }}
 
     <hr/>
     {{include('AppBundle:tests:partial.html.twig')}}
