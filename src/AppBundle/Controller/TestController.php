@@ -11,6 +11,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\Curso;
 
 class TestController extends Controller
 {
@@ -36,6 +37,46 @@ class TestController extends Controller
             'products' => $products,
             'fruits' => $fruits
         ]);
+    }
+
+    public function createAction() {
+      $curso = new Curso();
+      $curso -> setTitulo("Curso de Symfony 3");
+      $curso -> setDescripcion("Curso completo de Symfony 3");
+      $curso -> setPrecio(80);
+
+      $em = $this->getDoctrine()->getManager();
+      $em ->persist($curso);
+      $flush = $em -> flush();
+
+      if ($flush != null) {
+        echo "The course wasn't create correctly";
+      } else {
+        echo "The course was create correctly";
+      }
+
+      die();
+    }
+
+    public function readAction() {
+      $em = $this->getDoctrine()->getManager();
+      $curso_repo =  $em->getRepository("AppBundle:Curso");
+      $cursos = $curso_repo->findAll();
+
+      foreach ($cursos as $curso) {
+        echo $curso->getTitulo()."<br/>";
+        echo $curso->getDescripcion()."<br/>";
+        echo $curso->getPrecio()."<br/><hr/>";
+      }
+
+      die();
+    }
+
+    public function updateAction($id, $titulo, $descripcion, $precio) {
+      $em = $this->getDoctrine()->getManager();
+      $curso_repo =  $em->getRepository("AppBundle:Curso");
+
+      $curso = $cursos_repo -> find($id);
     }
 
 }

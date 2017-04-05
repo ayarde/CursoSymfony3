@@ -6,3 +6,11 @@ test_index:
     name: "[a-zA-Z]*"
     page: \d+
     lang: es|en|fr
+
+test_create:
+  path: /tests/create
+  defaults: {_controller: AppBundle:Test:create}
+
+test_read:
+  path: /tests/read
+  defaults: {_controller: AppBundle:Test:read}
