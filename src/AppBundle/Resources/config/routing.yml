@@ -14,3 +14,15 @@ test_create:
 test_read:
   path: /tests/read
   defaults: {_controller: AppBundle:Test:read}
+
+test_update:
+  path: /tests/update/{id}/{titulo}/{descripcion}/{precio}
+  defaults: {_controller: AppBundle:Test:update}
+
+test_delete:
+  path: /tests/delete/{id}
+  defaults: {_controller: AppBundle:Test:delete}
+
+test_native:
+  path: /tests/native
+  defaults: {_controller: AppBundle:Test:nativeSql}

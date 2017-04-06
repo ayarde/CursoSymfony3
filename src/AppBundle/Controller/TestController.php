@@ -60,23 +60,93 @@ class TestController extends Controller
 
     public function readAction() {
       $em = $this->getDoctrine()->getManager();
-      $curso_repo =  $em->getRepository("AppBundle:Curso");
-      $cursos = $curso_repo->findAll();
+      $cursos_repo =  $em->getRepository("AppBundle:Curso");
+      $cursos = $cursos_repo->findAll();
 
-      foreach ($cursos as $curso) {
+      $curso_ochenta = $cursos_repo -> findOneByPrecio(80);
+      echo $curso_ochenta -> getTitulo();
+
+      /*foreach ($cursos as $curso) {
         echo $curso->getTitulo()."<br/>";
         echo $curso->getDescripcion()."<br/>";
         echo $curso->getPrecio()."<br/><hr/>";
-      }
+      }*/
 
       die();
     }
 
     public function updateAction($id, $titulo, $descripcion, $precio) {
       $em = $this->getDoctrine()->getManager();
-      $curso_repo =  $em->getRepository("AppBundle:Curso");
+      $cursos_repo =  $em -> getRepository("AppBundle:Curso");
 
       $curso = $cursos_repo -> find($id);
+      $curso -> setTitulo($titulo);
+      $curso -> setDescripcion($descripcion);
+      $curso -> setPrecio($precio);
+
+      $em -> persist($curso);
+      $flush = $em -> flush();
+
+      if ($flush != null) {
+        echo "The course wasn't update correctly";
+      } else {
+        echo "The course was update correctly";
+      }
+
+      die();
+    }
+
+    public function deleteAction($id) {
+      $em = $this->getDoctrine()->getManager();
+      $cursos_repo =  $em -> getRepository("AppBundle:Curso");
+
+      $curso = $cursos_repo -> find($id);
+      $em -> remove($curso);
+
+      $flush = $em -> flush();
+
+      if ($flush != null) {
+        echo "The course wasn't delete correctly";
+      } else {
+        echo "The course was delete correctly";
+      }
+
+      die();
+    }
+
+    public function nativeSqlAction() {
+      $em = $this->getDoctrine()->getManager();
+      $cursos_repo = $em->getRepository("AppBundle:Curso");
+      /*$db = $em -> getConnection();
+
+      $query = "SELECT * FROM cursos";
+      $stmt = $db -> prepare($query);
+      $params = array();
+      $stmt -> execute($params);
+
+      $cursos = $stmt ->fetchAll();*/
+
+      /*$query = $em -> createQuery("
+        SELECT c FROM AppBundle:Curso c
+        WHERE c.precio > :precio
+      ")->setParameter("precio","79");
+
+      $cursos = $query->getResult();*/
+
+      /*$query = $cursos_repo -> createQueryBuilder("c")
+              ->where("c.precio > :precio")
+              ->setParameter("precio","79")
+              ->getQuery();
+
+      $cursos = $query->getResult();*/
+
+      $cursos = $cursos_repo->getCursos();
+
+      foreach ($cursos as $curso) {
+        echo $curso->getTitulo()."<br/>";
+      }
+
+      die();
     }
 
 }
