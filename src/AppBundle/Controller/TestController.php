@@ -12,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Curso;
+use AppBundle\Form\CursoType;
 
 class TestController extends Controller
 {
@@ -147,6 +148,15 @@ class TestController extends Controller
       }
 
       die();
+    }
+
+    public function formAction() {
+      $curso = new Curso();
+      $form = $this->createForm(CursoType::class,$curso);
+      
+      return $this->render('AppBundle:tests:form.html.twig', [
+          'form' => $form->createView(),
+      ]);
     }
 
 }

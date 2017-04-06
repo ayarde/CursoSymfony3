@@ -26,3 +26,7 @@ test_delete:
 test_native:
   path: /tests/native
   defaults: {_controller: AppBundle:Test:nativeSql}
+
+test_form:
+  path: /tests/form
+  defaults: {_controller: AppBundle:Test:form}
