@@ -29,4 +29,8 @@ test_native:
 
 test_form:
   path: /tests/form
-  defaults: {_controller: AppBundle:Test:form}
+  defaults: { _controller: AppBundle:Test:form}
+
+test_validateEmail:
+  path: /tests/validate-email/{email}
+  defaults: { _controller: AppBundle:Test:validateEmail}

@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Curso;
 use AppBundle\Form\CursoType;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class TestController extends Controller
 {
@@ -161,7 +162,7 @@ class TestController extends Controller
         $data = array(
           "titulo" => $form->get("titulo")->getData(),
           "descripcion" => $form->get("descripcion")->getData(),
-          "precio" => $form->get("precio")->getData()
+          "precio" => $form->get("precio")->getData(),
         );
       } else {
         $status = null;
@@ -173,6 +174,20 @@ class TestController extends Controller
           'status'=> $status,
           'data' => $data,
       ]);
+    }
+
+    public function validateEmailAction($email){
+      $emailConstraint = new Assert\Email();
+      $emailConstraint->message = "Give me a right email";
+
+      $error = $this->get("validator")->validate($email, $emailConstraint);
+
+      if (count($error) == 0) {
+        echo "<h1>Valid email!!</h1>";
+      } else {
+        echo $error[0]->getMessage();
+      }
+      die();
     }
 
 }
