@@ -1,11 +1,13 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace BlogBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Producto
+ * Tag
  */
-class Producto
+class Tag
 {
     /**
      * @var integer
@@ -22,10 +24,14 @@ class Producto
      */
     private $description;
 
+    protected  $entryTag;
+
     /**
-     * @var string
+     * Tag constructor.
      */
-    private $price;
+    public function __construct() {
+        $this->entryTag = new ArrayCollection();
+    }
 
 
     /**
@@ -43,7 +49,7 @@ class Producto
      *
      * @param string $name
      *
-     * @return Producto
+     * @return Tag
      */
     public function setName($name)
     {
@@ -67,7 +73,7 @@ class Producto
      *
      * @param string $description
      *
-     * @return Producto
+     * @return Tag
      */
     public function setDescription($description)
     {
@@ -87,27 +93,21 @@ class Producto
     }
 
     /**
-     * Set price
-     *
-     * @param string $price
-     *
-     * @return Producto
+     * @return ArrayCollection
      */
-    public function setPrice($price)
+    public function getEntryTag()
     {
-        $this->price = $price;
-
-        return $this;
+        return $this->entryTag;
     }
 
     /**
-     * Get price
-     *
-     * @return string
+     * @param ArrayCollection $entryTag
      */
-    public function getPrice()
+    public function setEntryTag($entryTag)
     {
-        return $this->price;
+        $this->entryTag = $entryTag;
     }
+
+
 }
 

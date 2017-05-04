@@ -1,9 +1,9 @@
 <?php
 
-namespace MyBundle;
+namespace BlogBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class MyBundle extends Bundle
+class BlogBundle extends Bundle
 {
 }

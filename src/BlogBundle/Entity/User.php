@@ -1,16 +1,21 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace BlogBundle\Entity;
 
 /**
- * Usuario
+ * User
  */
-class Usuario
+class User
 {
     /**
      * @var integer
      */
     private $id;
+
+    /**
+     * @var string
+     */
+    private $role;
 
     /**
      * @var string
@@ -25,11 +30,6 @@ class Usuario
     /**
      * @var string
      */
-    private $description;
-
-    /**
-     * @var string
-     */
     private $email;
 
     /**
@@ -40,12 +40,7 @@ class Usuario
     /**
      * @var string
      */
-    private $image;
-
-    /**
-     * @var string
-     */
-    private $alternative;
+    private $imagen;
 
 
     /**
@@ -59,11 +54,35 @@ class Usuario
     }
 
     /**
+     * Set role
+     *
+     * @param string $role
+     *
+     * @return User
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
      * Set name
      *
      * @param string $name
      *
-     * @return Usuario
+     * @return User
      */
     public function setName($name)
     {
@@ -87,7 +106,7 @@ class Usuario
      *
      * @param string $surname
      *
-     * @return Usuario
+     * @return User
      */
     public function setSurname($surname)
     {
@@ -107,35 +126,11 @@ class Usuario
     }
 
     /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Usuario
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
      * Set email
      *
      * @param string $email
      *
-     * @return Usuario
+     * @return User
      */
     public function setEmail($email)
     {
@@ -159,7 +154,7 @@ class Usuario
      *
      * @param string $password
      *
-     * @return Usuario
+     * @return User
      */
     public function setPassword($password)
     {
@@ -179,51 +174,27 @@ class Usuario
     }
 
     /**
-     * Set image
+     * Set imagen
      *
-     * @param string $image
+     * @param string $imagen
      *
-     * @return Usuario
+     * @return User
      */
-    public function setImage($image)
+    public function setImagen($imagen)
     {
-        $this->image = $image;
+        $this->imagen = $imagen;
 
         return $this;
     }
 
     /**
-     * Get image
+     * Get imagen
      *
      * @return string
      */
-    public function getImage()
+    public function getImagen()
     {
-        return $this->image;
-    }
-
-    /**
-     * Set alternative
-     *
-     * @param string $alternative
-     *
-     * @return Usuario
-     */
-    public function setAlternative($alternative)
-    {
-        $this->alternative = $alternative;
-
-        return $this;
-    }
-
-    /**
-     * Get alternative
-     *
-     * @return string
-     */
-    public function getAlternative()
-    {
-        return $this->alternative;
+        return $this->imagen;
     }
 }
 

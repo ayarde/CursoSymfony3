@@ -1,10 +1,6 @@
-AppBundle\Entity\Usuario:
+BlogBundle\Entity\User:
     type: entity
-    table: usuarios
-    uniqueConstraints:
-        email:
-            columns:
-                - email
+    table: users
     id:
         id:
             type: integer
@@ -15,45 +11,39 @@ AppBundle\Entity\Usuario:
             generator:
                 strategy: IDENTITY
     fields:
+        role:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
         name:
             type: string
-            nullable: false
+            nullable: true
             length: 255
             options:
                 fixed: false
         surname:
             type: string
-            nullable: false
+            nullable: true
             length: 255
-            options:
-                fixed: false
-        description:
-            type: text
-            nullable: false
-            length: 65535
             options:
                 fixed: false
         email:
             type: string
-            nullable: false
+            nullable: true
             length: 255
             options:
                 fixed: false
         password:
             type: string
-            nullable: false
+            nullable: true
             length: 255
             options:
                 fixed: false
-        image:
+        imagen:
             type: string
-            nullable: false
-            length: 255
-            options:
-                fixed: false
-        alternative:
-            type: string
-            nullable: false
+            nullable: true
             length: 255
             options:
                 fixed: false

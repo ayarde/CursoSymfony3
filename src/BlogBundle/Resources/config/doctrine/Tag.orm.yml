@@ -1,6 +1,6 @@
-AppBundle\Entity\Producto:
+BlogBundle\Entity\Tag:
     type: entity
-    table: productos
+    table: tags
     id:
         id:
             type: integer
@@ -18,15 +18,15 @@ AppBundle\Entity\Producto:
             options:
                 fixed: false
         description:
-            type: string
+            type: text
             nullable: true
-            length: 255
+            length: 65535
             options:
                 fixed: false
-        price:
-            type: string
-            nullable: true
-            length: 255
-            options:
-                fixed: false
+
+    oneToMany:
+            entryTag:
+                targetEntity: EntryTag
+                mappedBy: tag
+                cascade: ["persist"]
     lifecycleCallbacks: {  }
