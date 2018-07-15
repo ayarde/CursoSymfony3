@@ -46,10 +46,11 @@
                             {% if app.user == null %}
                                 <li><a href="{{ path('login') }}">Login</a></li>
                             {% else %}
+                                <li><a href="{{ path('blog_index_tag') }}">Tags</a></li>
+                                <li role="separator" class="divider"></li>
                                 <li><a href="{{ path('login_out') }}">Log out</a></li>
                             {% endif %}
-                            <li role="separator" class="divider"></li>
-                                <li><a href="#">Help</a></li>
+                               <li><a href="#">Help</a></li>
                         </ul>
                     </li>
                 </ul>

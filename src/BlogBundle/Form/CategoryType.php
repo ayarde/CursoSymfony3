@@ -3,13 +3,14 @@
 namespace BlogBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TagType extends AbstractType
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
+class CategoryType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -19,12 +20,11 @@ class TagType extends AbstractType
         $builder
             ->add('name',TextType::class, array("label"=>"Name:","required"=>"required",
                 "attr"=>array("class"=>"form-name form-control",
-            )))
+                )))
             ->add('description',TextareaType::class, array("label"=>"Description:","required"=>"required",
                 "attr"=>array("class"=>"form-description form-control",
-            )))
+                )))
             ->add('Save', SubmitType::class, array("attr"=>array("class"=>"form-submit btn btn-success",)));
-
     }
     
     /**
@@ -33,7 +33,7 @@ class TagType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'BlogBundle\Entity\Tag'
+            'data_class' => 'BlogBundle\Entity\Category'
         ));
     }
 
@@ -42,7 +42,7 @@ class TagType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'blogbundle_tag';
+        return 'blogbundle_category';
     }
 
 
